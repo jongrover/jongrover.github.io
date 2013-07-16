@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Code Foo]]></title>
+  <title><![CDATA[Code Vegas]]></title>
   <link href="http://jongrover.github.io/atom.xml" rel="self"/>
   <link href="http://jongrover.github.io/"/>
-  <updated>2013-07-16T17:09:17-04:00</updated>
+  <updated>2013-07-16T17:31:22-04:00</updated>
   <id>http://jongrover.github.io/</id>
   <author>
     <name><![CDATA[Jonathan Grover]]></name>
