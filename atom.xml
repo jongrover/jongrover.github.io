@@ -4,7 +4,7 @@
   <title><![CDATA[Code Foo]]></title>
   <link href="http://jongrover.github.io/atom.xml" rel="self"/>
   <link href="http://jongrover.github.io/"/>
-  <updated>2013-07-17T11:15:11-04:00</updated>
+  <updated>2013-07-17T16:46:05-04:00</updated>
   <id>http://jongrover.github.io/</id>
   <author>
     <name><![CDATA[Jonathan Grover]]></name>
@@ -47,7 +47,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>Template Views</h4>
+<h4>Building Templates</h4>
 
 <p>Next lets jump over to the index.html file and so we can create the main template view for our application. To do this we make use of the HTML script tags and set them to a type of &lsquo;text/x-handlebars&rsquo;. This specifies the code as a handlebar template. Ember sees that this handlebar template has not been given a specific id attribute and thus it will know to automatically render this content first when the user visits the page.<br></p>
 
