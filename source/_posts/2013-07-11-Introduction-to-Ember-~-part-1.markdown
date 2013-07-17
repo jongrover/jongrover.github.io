@@ -8,21 +8,21 @@ Now that we know some of the benefits and the stress free building environment E
 
 ### What We Will Build
 
-In the first part of this series we will start our application off by downloading all the neccessary code libraries, create a new Ember App object, fill in our template (views) and map our routes to specific templates.
+In the first part of this series we will start our application off by downloading all the neccessary code libraries, create a new Ember App object, create templates, and map our routes to them.
 
 #### Downloading Ember and Dependencies
 
-To start a new Ember app typically you would download jQuery, Handlebars, and Ember. To do this in a single step download this [starter code zip file](http://google.com) from my github repo.
+To start a new Ember app typically you would download jQuery, Handlebars, and Ember. To do this in a single step download this [starter code zip file](https://github.com/jongrover/social-cat/archive/step0.zip) or [clone from my github repo](https://github.com/jongrover/social-cat).
 
-Find the zip file you downloaded, uncompress it and move the social-cat folder to the location where you would like it to live on your computer.
+Find the zip file you downloaded, uncompress it and move the social-cat folder to the location where you would like it to live on your computer or move to the directory you cloned the repo at.
 
-Lets open the folder up in our code editor and see what we have. You will notice that the zip included the following files and folders:<br><img src="/images/content/social-cat-folder-structure.jpg" alt="Social Cat App folder structure">
+Lets open the folder up in our code editor and see what we have. You will notice that included is the following files and folders:<br><img src="/images/content/social-cat-folder-structure.jpg" alt="Social Cat App folder structure">
 
 #### Creating an instance of an Ember Application
 
-Open /js/app.js file. To start off our app we need to create a new instance of the Ember.Application object. This will allow us to make use of all the juicy features of an Ember app.
+Open /js/app.js file. To start off our app we need to create a new instance of the Ember.Application object and set it with the name for our application 'SocialCat'. This will allow us to make use of all the out of the box features that Ember provides whenever we refer to out SocialCat object.
 {% codeblock lang:javascript %}
-App = Ember.Application.create();{% endcodeblock %}
+SocialCat = Ember.Application.create();{% endcodeblock %}
 
 #### Template Views
 
@@ -33,7 +33,7 @@ Next lets jump over to the index.html file and so we can create the main templat
 </script>{% endcodeblock %}<br>If you open index.html in your browser, here is what we see:<img src="/images/content/social-cat-browser-view-1.jpg" alt="Social Cat browser view 1"><br><br>
 That's grand, thanks Ember.
 
-Let's build out some more views in our index.html page. In the code example below notice that the handlebars template script tags are given an id attribute of cats and about. This is neccesary for Ember associate the template with specific route names. We must also not forget to place the {% raw %}{{outlet}}{% endraw %} placeholder inside the main template view. This tells Ember where to render the templates (cats and about) within the main template view.<br>
+Let's build out some more templates in our index.html page. In the code example below notice that the handlebars template script tags are given an id attribute of cats and about. This is neccesary for Ember to associate the template with a specific route name. We must also not forget to place the {% raw %}{{outlet}}{% endraw %} placeholder inside the main template view. This tells Ember where to render the templates (cats and about) inside the main template view.<br>
 {% codeblock lang:html %}
 <script type="text/x-handlebars">
   <h1>Social Cat</h1>
@@ -50,11 +50,10 @@ Let's build out some more views in our index.html page. In the code example belo
 
 #### Setting up Routes
 
-Up to this point we have created several template views in our index.html. When users interact with our application we will want to display some of the views within the placeholder marked {% raw %}{{outlet}}{% endraw %}. Setting up routes allows ember to map URLs like #/about to display the template marked with the id of about and #/cats to display the template marked with the id of cats. Fortunately, Ember makes setting up routes effortless. Lets jump back to /js/app.js file and build out our routes.
+Up to this point we have created several template views in our index.html. When users interact with our application we will want to display some of the views within the placeholder marked {% raw %}{{outlet}}{% endraw %}. Setting up routes allows ember to map URLs like #/about to display the template marked with the id of about and #/cats to display the template marked with the id of cats. Fortunately, Ember makes setting up routes fairly effortless. Lets move over to our /js/router.js file and build out our routes.
 {% codeblock lang:javascript %}
-App = Ember.Application.create();
 
-App.Router.map(function() {
+SocialCat.Router.map(function() {
   this.resource('about');
   this.resource('cats');
 });
@@ -63,7 +62,7 @@ To test this in a browser, you can manually type in the url index.htm#/about or 
 
 #### Linking to Route Paths
 
-We are ready and primed to add navigational links that will render each appropriate view. Let's jump back to index.html and insert a nav bar with links. Instead of standard HTML links we will instead use handlebars #linkTo helper. This helper will generate HTML links for us that will navigate to the correct route. #linkTo first argument is the name of the route (in our case 'cats' and 'about'). The closing /linkTo surrounds closes the link and allows us to surround the content we wish to be linkable.
+We are now ready to add navigational links that will change the URL for the appropriate route and display the appropriate template for us. Let's jump back to index.html and insert a nav bar with links. Instead of standard HTML links we will instead use handlebars #linkTo helper. This helper will generate HTML links for us that will navigate to the correct route. #linkTo first argument is the name of the route (in our case 'cats' and 'about'). The closing /linkTo surrounds the link cotent and defines the ending point we wish to be linkable.
 {% codeblock lang:javascript %}{% raw %}
 <script type="text/x-handlebars">
   <h1>Social Cat</h1>
@@ -92,4 +91,4 @@ Let's test in our browser. When you click the Cats link you should see this<br><
 
 We learned that Ember allows us to quickly and easily link routes to template views. Templates are created by using script tags with type of text/x-handlebars and that we can use App.Router.map to associate the a route like #/about wit the matching template with the same id of about.
 
-In part 2 we will learn to create Models and populate our views with data from our models.
+In part 2 we will learn to create a model and explore working with nested routes.
