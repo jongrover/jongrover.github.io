@@ -141,8 +141,37 @@
 
 <p>Let&rsquo;s test in our browser. When you click the Cats link you should see this<br><img src="/images/content/social-cat-browser-view-2.jpg" alt="Browser view of cats template"><br><br>and when you click the About link you should see this<br><img src="/images/content/social-cat-browser-view-3.jpg" alt="Browser view of about template"></p>
 
+<p>Looking good, but we would like to modify the index route so that when a user first visits our site, it will automatically redirect to the &lsquo;cats&rsquo; route. To do this we will use the following code in our /js/router.js</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">SocialCat</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;about&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">SocialCat</span><span class="p">.</span><span class="nx">IndexRoute</span> <span class="o">=</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">Route</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">redirect</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">transitionTo</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will notice that we changed the default behavior of the index route (the default route that will display first) by refering to SocialCat.IndexRoute and passing it the value of Ember.Route.extend(); This extends the route behavior and allows us to specify a redirect that transitions to our &lsquo;cats&rsquo; route.</p>
+
 <h3>What We Learned</h3>
 
-<p>We learned that Ember allows us to quickly and easily link routes to template views. Templates are created by using script tags with type of text/x-handlebars and that we can use App.Router.map to associate the a route like #/about wit the matching template with the same id of about.</p>
+<p>We learned that Ember allows us to quickly and easily link routes to templates using Handlebars #linkToto helper. Templates are created by using script tags with type of text/x-handlebars and that we can use App.Router.map to associate a route like #/about with the matching template with the same id of about. We also learned that we can interupt and redefine route behavior by extending Ember&rsquo;s Route object.</p>
 
-<p>In part 2 we will learn to create a model and explore working with nested routes.</p>
+<h3>Whats Next?</h3>
+
+<p>In part 2 we will learn to create a model, explore working with nested routes, and how to display model data into our templates.</p>
