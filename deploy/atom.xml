@@ -1,109 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Code Foo</title>
-  <meta name="author" content="Jonathan Grover">
-
-  
-  <meta name="description" content="Working with Routes and Templates Introduction Ember is a great clientside JavaScript MVC framework that piggybacks on top of Handlebars, a very &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://jongrover.github.io/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="Code Foo" type="application/atom+xml">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <div id="logo">
-  	<div id="logoLeft">{</div>
-  	<div id="logoText">mob</div>
-  	<div id="logoRight">}</div>
-  	<div class="clear"></div>
-  </div>
-  <h1><a href="/">Code Foo</a></h1>
-  
-    <h2>Code knowledge for weary web travelers lost in the information super highway.</h2>
-  
-  <div class="clear"></div>
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:jongrover.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Code Foo]]></title>
+  <link href="http://jongrover.github.io/atom.xml" rel="self"/>
+  <link href="http://jongrover.github.io/"/>
+  <updated>2013-07-18T16:45:50-04:00</updated>
+  <id>http://jongrover.github.io/</id>
+  <author>
+    <name><![CDATA[Jonathan Grover]]></name>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/07/11/Introduction-to-Ember-%7E-part-1/">Introduction to Ember ~ Part 1</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2013-07-11T00:00:00-04:00" pubdate data-updated="true">Jul 11<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Working with Routes and Templates</h2>
+  <entry>
+    <title type="html"><![CDATA[Introduction To Ember ~ Part 1]]></title>
+    <link href="http://jongrover.github.io/blog/2013/07/11/Introduction-to-Ember-%7E-part-1/"/>
+    <updated>2013-07-11T00:00:00-04:00</updated>
+    <id>http://jongrover.github.io/blog/2013/07/11/Introduction-to-Ember-~-part-1</id>
+    <content type="html"><![CDATA[<h2>Working with Routes and Templates</h2>
 
 <h3>Introduction</h3>
 
@@ -121,7 +36,7 @@
 
 <p>Find the zip file you downloaded, uncompress it and move the social-cat folder to the location where you would like it to live on your computer or move to the directory you cloned the repo at.</p>
 
-<p>Lets open the folder up in our code editor and see what we have. You will notice that included is the following files and folders:<br><img src="/images/content/social-cat-folder-structure.jpg" alt="Social Cat App folder structure"></p>
+<p>Lets open the folder up in our code editor and see what we have. You will notice that included is the following files and folders:<br><img src="http://jongrover.github.io/images/content/social-cat-folder-structure.jpg" alt="Social Cat App folder structure"></p>
 
 <h4>Creating an instance of an Ember Application</h4>
 
@@ -145,7 +60,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<br>If you open index.html in your browser, here is what we see:<img src="/images/content/social-cat-browser-view-1.jpg" alt="Social Cat browser view 1"><br><br>
+<br>If you open index.html in your browser, here is what we see:<img src="http://jongrover.github.io/images/content/social-cat-browser-view-1.jpg" alt="Social Cat browser view 1"><br><br>
 
 
 <p>That&rsquo;s grand, thanks Ember.</p>
@@ -244,7 +159,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Let&rsquo;s test in our browser. When you click the Cats link you should see this<br><img src="/images/content/social-cat-browser-view-2.jpg" alt="Browser view of cats template"><br><br>and when you click the About link you should see this<br><img src="/images/content/social-cat-browser-view-3.jpg" alt="Browser view of about template"></p>
+<p>Let&rsquo;s test in our browser. When you click the Cats link you should see this<br><img src="http://jongrover.github.io/images/content/social-cat-browser-view-2.jpg" alt="Browser view of cats template"><br><br>and when you click the About link you should see this<br><img src="http://jongrover.github.io/images/content/social-cat-browser-view-3.jpg" alt="Browser view of about template"></p>
 
 <p>Looking good, but we would like to modify the index route so that when a user first visits our site, it will automatically redirect to the &lsquo;cats&rsquo; route. To do this we will use the following code in our /js/router.js</p>
 
@@ -280,106 +195,7 @@
 <h3>Whats Next?</h3>
 
 <p>In part 2 we will learn to create a model, explore working with nested routes, and how to display model data into our templates.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/07/11/Introduction-to-Ember-%7E-part-1/">Introduction To Ember ~ Part 1</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/jongrover">@jongrover</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'jongrover',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jonathan Grover -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

@@ -24,7 +24,7 @@ Open /js/app.js file. To start off our app we need to create a new instance of t
 {% codeblock lang:javascript %}
 SocialCat = Ember.Application.create();{% endcodeblock %}
 
-#### Template Views
+#### Building Templates
 
 Next lets jump over to the index.html file and so we can create the main template view for our application. To do this we make use of the HTML script tags and set them to a type of 'text/x-handlebars'. This specifies the code as a handlebar template. Ember sees that this handlebar template has not been given a specific id attribute and thus it will know to automatically render this content first when the user visits the page.<br>
 {% codeblock lang:html %}
@@ -87,8 +87,25 @@ We can also go into css/style.css and add a class of 'active' to style the activ
 
 Let's test in our browser. When you click the Cats link you should see this<br><img src="/images/content/social-cat-browser-view-2.jpg" alt="Browser view of cats template"><br><br>and when you click the About link you should see this<br><img src="/images/content/social-cat-browser-view-3.jpg" alt="Browser view of about template">
 
+Looking good, but we would like to modify the index route so that when a user first visits our site, it will automatically redirect to the 'cats' route. To do this we will use the following code in our /js/router.js
+{% codeblock lang:javascript %}{% raw %}
+SocialCat.Router.map(function() {
+  this.resource('about');
+  this.resource('cats');
+});
+
+SocialCat.IndexRoute = Ember.Route.extend({
+  redirect: function() {
+    this.transitionTo('cats');
+  }
+});
+{% endraw %}{% endcodeblock %}
+You will notice that we changed the default behavior of the index route (the default route that will display first) by refering to SocialCat.IndexRoute and passing it the value of Ember.Route.extend(); This extends the route behavior and allows us to specify a redirect that transitions to our 'cats' route.
+
 ### What We Learned
 
-We learned that Ember allows us to quickly and easily link routes to template views. Templates are created by using script tags with type of text/x-handlebars and that we can use App.Router.map to associate the a route like #/about wit the matching template with the same id of about.
+We learned that Ember allows us to quickly and easily link routes to templates using Handlebars #linkToto helper. Templates are created by using script tags with type of text/x-handlebars and that we can use App.Router.map to associate a route like #/about with the matching template with the same id of about. We also learned that we can interupt and redefine route behavior by extending Ember's Route object. 
 
-In part 2 we will learn to create a model and explore working with nested routes.
+### Whats Next?
+
+In part 2 we will learn to create a model, explore working with nested routes, and how to display model data into our templates.
