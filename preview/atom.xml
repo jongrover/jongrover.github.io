@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Code Foo]]></title>
+  <link href="http://jongrover.github.io/atom.xml" rel="self"/>
+  <link href="http://jongrover.github.io/"/>
+  <updated>2013-07-18T16:49:01-04:00</updated>
+  <id>http://jongrover.github.io/</id>
+  <author>
+    <name><![CDATA[Jonathan Grover]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Introduction To Ember ~ Part 1]]></title>
+    <link href="http://jongrover.github.io/blog/2013/07/11/Introduction-to-Ember-%7E-part-1/"/>
+    <updated>2013-07-11T00:00:00-04:00</updated>
+    <id>http://jongrover.github.io/blog/2013/07/11/Introduction-to-Ember-~-part-1</id>
+    <content type="html"><![CDATA[<h2>Working with Routes and Templates</h2>
+
+<h3>Introduction</h3>
+
+<p><a href="http://emberjs.com/">Ember</a> is a great clientside JavaScript MVC framework that piggybacks on top of <a href="http://handlebarsjs.com/">Handlebars</a>, a very popular and syntactically friendly templating library. In learning Ember, it becomes apparent almost immediately that it is built with a distinct philosophy that values: true separation of model, views, and controls; maintaining clear usable URLs throughout the life of your application; and seeks to automate and abstract away most of the common code you would find yourself writing when building an app.</p>
+
+<p>Now that we know some of the benefits and the stress free building environment Ember provides, you are no doubt excited to jump in&mdash;so let&rsquo;s get started!</p>
+
+<h3>What We Will Build</h3>
+
+<p>In the first part of this series we will start our application off by downloading all the neccessary code libraries, create a new Ember App object, create templates, and map our routes to them.</p>
+
+<h4>Downloading Ember and Dependencies</h4>
+
+<p>To start a new Ember app typically you would download jQuery, Handlebars, and Ember. To do this in a single step download this <a href="https://github.com/jongrover/social-cat/archive/step0.zip">starter code zip file</a> or <a href="https://github.com/jongrover/social-cat">clone from my github repo</a>.</p>
+
+<p>Find the zip file you downloaded, uncompress it and move the social-cat folder to the location where you would like it to live on your computer or move to the directory you cloned the repo at.</p>
+
+<p>Lets open the folder up in our code editor and see what we have. You will notice that included is the following files and folders:<br><img src="http://jongrover.github.io/images/content/social-cat-folder-structure.jpg" alt="Social Cat App folder structure"></p>
+
+<h4>Creating an instance of an Ember Application</h4>
+
+<p>Open /js/app.js file. To start off our app we need to create a new instance of the Ember.Application object and set it with the name for our application &lsquo;SocialCat&rsquo;. This will allow us to make use of all the out of the box features that Ember provides whenever we refer to out SocialCat object.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">SocialCat</span> <span class="o">=</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">Application</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Building Templates</h4>
+
+<p>Next lets jump over to the index.html file and so we can create the main template view for our application. To do this we make use of the HTML script tags and set them to a type of &lsquo;text/x-handlebars&rsquo;. This specifies the code as a handlebar template. Ember sees that this handlebar template has not been given a specific id attribute and thus it will know to automatically render this content first when the user visits the page.<br></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-handlebars&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Social</span> <span class="nx">Cat</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br>If you open index.html in your browser, here is what we see:<img src="http://jongrover.github.io/images/content/social-cat-browser-view-1.jpg" alt="Social Cat browser view 1"><br><br>
+
+
+<p>That&rsquo;s grand, thanks Ember.</p>
+
+<p>Let&rsquo;s build out some more templates in our index.html page. In the code example below notice that the handlebars template script tags are given an id attribute of cats and about. This is neccesary for Ember to associate the template with a specific route name. We must also not forget to place the {{outlet}} placeholder inside the main template view. This tells Ember where to render the templates (cats and about) inside the main template view.<br></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-handlebars&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Social</span> <span class="nx">Cat</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+</span><span class='line'>  <span class="p">{{</span><span class="nx">outlet</span><span class="p">}}</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-handlebars&quot;</span> <span class="na">id=</span><span class="s">&quot;about&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">About</span> <span class="nx">Social</span> <span class="nx">Cat</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-handlebars&quot;</span> <span class="na">id=</span><span class="s">&quot;cats&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Cats</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Setting up Routes</h4>
+
+<p>Up to this point we have created several template views in our index.html. When users interact with our application we will want to display some of the views within the placeholder marked {{outlet}}. Setting up routes allows ember to map URLs like #/about to display the template marked with the id of about and #/cats to display the template marked with the id of cats. Fortunately, Ember makes setting up routes fairly effortless. Lets move over to our /js/router.js file and build out our routes.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">SocialCat</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;about&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To test this in a browser, you can manually type in the url index.htm#/about or index.html#/cats to see the views render.</p>
+
+<h4>Linking to Route Paths</h4>
+
+<p>We are now ready to add navigational links that will change the URL for the appropriate route and display the appropriate template for us. Let&rsquo;s jump back to index.html and insert a nav bar with links. Instead of standard HTML links we will instead use handlebars #linkTo helper. This helper will generate HTML links for us that will navigate to the correct route. #linkTo first argument is the name of the route (in our case &lsquo;cats&rsquo; and &lsquo;about&rsquo;). The closing /linkTo surrounds the link cotent and defines the ending point we wish to be linkable.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/x-handlebars&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Social</span> <span class="nx">Cat</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">nav</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">linkTo</span> <span class="s1">&#39;cats&#39;</span><span class="p">}}</span><span class="nx">Cats</span><span class="p">{{</span><span class="err">/linkTo}} {{#linkTo &#39;about&#39;}}About{{/linkTo}}&lt;/nav&gt;</span>
+</span><span class='line'>  <span class="p">{{</span><span class="nx">outlet</span><span class="p">}}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/x-handlebars&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;about&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Social</span> <span class="nx">Networking</span> <span class="k">for</span> <span class="nx">Kitties</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">The</span> <span class="nx">best</span> <span class="nx">spot</span> <span class="nx">to</span> <span class="nx">find</span> <span class="nx">purrrfect</span> <span class="nx">friends</span> <span class="k">for</span> <span class="nx">your</span> <span class="nx">cat</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/x-handlebars&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;cats&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Cats</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We can also go into css/style.css and add a class of &lsquo;active&rsquo; to style the active link for the view that is displaying. Ember gives us this functionality for free.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">.</span><span class="nx">active</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">color</span><span class="o">:</span> <span class="nx">black</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span> <span class="nx">bold</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s test in our browser. When you click the Cats link you should see this<br><img src="http://jongrover.github.io/images/content/social-cat-browser-view-2.jpg" alt="Browser view of cats template"><br><br>and when you click the About link you should see this<br><img src="http://jongrover.github.io/images/content/social-cat-browser-view-3.jpg" alt="Browser view of about template"></p>
+
+<p>Looking good, but we would like to modify the index route so that when a user first visits our site, it will automatically redirect to the &lsquo;cats&rsquo; route. To do this we will use the following code in our /js/router.js</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">SocialCat</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;about&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">resource</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">SocialCat</span><span class="p">.</span><span class="nx">IndexRoute</span> <span class="o">=</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">Route</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">redirect</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">transitionTo</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will notice that we changed the default behavior of the index route (the default route that will display first) by refering to SocialCat.IndexRoute and passing it the value of Ember.Route.extend(); This extends the route behavior and allows us to specify a redirect that transitions to our &lsquo;cats&rsquo; route.</p>
+
+<h3>What We Learned</h3>
+
+<p>We learned that Ember allows us to quickly and easily link routes to templates using Handlebars #linkToto helper. Templates are created by using script tags with type of text/x-handlebars and that we can use App.Router.map to associate a route like #/about with the matching template with the same id of about. We also learned that we can interupt and redefine route behavior by extending Ember&rsquo;s Route object.</p>
+
+<h3>Whats Next?</h3>
+
+<p>In part 2 we will learn to create a model, explore working with nested routes, and how to display model data into our templates.</p>
+]]></content>
+  </entry>
+  
+</feed>
